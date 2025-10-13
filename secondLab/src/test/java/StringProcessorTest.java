@@ -37,14 +37,13 @@ public class StringProcessorTest {
     @Test
     void testReplaceNumbers() {
         assertEquals("одиндватри", StringProcessor.replaceNumbers("123"));
-        assertEquals("один два три", StringProcessor.replaceNumbers("1 2 3"));
+        assertEquals("один два три три", StringProcessor.replaceNumbers("1 2 3 3"));
 
         assertEquals("hello world", StringProcessor.replaceNumbers("hello world"));
 
-        assertEquals("одинОДИНдваДВАтри", StringProcessor.replaceNumbers("1ОДИН2ДВА3"));
-
         assertEquals("", StringProcessor.replaceNumbers(""));
 
+        assertEquals("одинОДИНдваДВАтри", StringProcessor.replaceNumbers("1ОДИН2ДВА3"));
     }
 
     @Test
@@ -64,5 +63,40 @@ public class StringProcessorTest {
         StringBuilder s4 = new StringBuilder("ab");
         StringProcessor.removeChars(s4);
         assertEquals("a", s4.toString());
+    }
+
+    @Test
+    void testReverseWord() {
+        assertEquals("  dd   cc bbb aaa ",
+                StringProcessor.reverseWord("  aaa   bbb cc dd "));
+
+        assertEquals(" world  hello ",
+                StringProcessor.reverseWord(" hello  world "));
+
+        assertEquals("  ",
+                StringProcessor.reverseWord("  "));
+
+        assertEquals("hello",
+                StringProcessor.reverseWord("hello"));
+
+        assertEquals("  3  2   1  ",
+                StringProcessor.reverseWord("  1  2   3  "));
+    }
+
+    @Test
+    void testReplaceHex() {
+        assertEquals("Васе 16 лет",
+                StringProcessor.replaceHex("Васе 0x00000010 лет"));
+
+        assertEquals("273 и 2730",
+                StringProcessor.replaceHex("0x00000111 и 0x00000AAA"));
+
+        assertEquals("0x00X000ZZ",
+                StringProcessor.replaceHex("0x00X000ZZ"));
+
+        assertEquals("hello",
+                StringProcessor.replaceHex("hello"));
+
+        assertEquals("", StringProcessor.replaceHex(""));
     }
 }
