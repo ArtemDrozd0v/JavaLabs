@@ -7,10 +7,10 @@ import java.util.List;
 public class StringProcessor {
 
     public static String copyString(String s, int n) {
-        if (n < 0) {
+        if (n < 0 || s == null) {
             throw new IllegalArgumentException("n не может быть отрицательным");
         }
-        if (s == null || n == 0) {
+        if (n == 0) {
             return "";
         }
 
@@ -34,7 +34,7 @@ public class StringProcessor {
         int index = 0;
         while ((index = mainString.indexOf(subString, index)) != -1) {
             count++;
-            index+=subString.length();;
+            index++;
         }
         return count;
     }

@@ -11,8 +11,8 @@ public class StringProcessorTest {
 
         assertEquals("", StringProcessor.copyString("hello", 0));
         assertEquals("", StringProcessor.copyString("", 0));
-        assertEquals("", StringProcessor.copyString(null, 0));
 
+        assertThrows(IllegalArgumentException.class, () -> StringProcessor.copyString(null,0));
         assertThrows(IllegalArgumentException.class, () -> StringProcessor.copyString("hello", -1));
 
         assertEquals("", StringProcessor.copyString("", 5));
@@ -22,10 +22,10 @@ public class StringProcessorTest {
     @Test
     void testCountStr() {
         assertEquals(2, StringProcessor.countStr("hello world hello", "hello"));
-        assertEquals(3, StringProcessor.countStr("ababab", "ab"));
+        assertEquals(2, StringProcessor.countStr("ababab", "aba"));
         assertEquals(0, StringProcessor.countStr("hello", "world"));
 
-        assertEquals(2, StringProcessor.countStr("aaaa", "aa"));
+        assertEquals(3, StringProcessor.countStr("aaaa", "aa"));
 
         assertThrows(IllegalArgumentException.class, () -> StringProcessor.countStr("hello", ""));
         assertThrows(IllegalArgumentException.class, () -> StringProcessor.countStr("hello", null));
@@ -60,9 +60,9 @@ public class StringProcessorTest {
         StringProcessor.removeChars(s3);
         assertEquals("", s3.toString());
 
-        StringBuilder s4 = new StringBuilder("ab");
+        StringBuilder s4 = new StringBuilder("abc");
         StringProcessor.removeChars(s4);
-        assertEquals("a", s4.toString());
+        assertEquals("ac", s4.toString());
     }
 
     @Test
