@@ -17,7 +17,7 @@ public class FinanceReport {
 
     public FinanceReport(FinanceReport other) {
         if (other == null) {
-            throw new IllegalArgumentException("Исходный объект null");
+            throw new IllegalArgumentException("Объект null");
         }
 
         this.reporterName = other.reporterName;

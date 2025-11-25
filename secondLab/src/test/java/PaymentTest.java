@@ -10,8 +10,8 @@ public class PaymentTest {
         String expected = "Плательщик: Иванов Иван Иванович, дата: 20.01.2006 сумма: 1000 руб. 05 коп.";
         assertEquals(expected, payment.toString());
 
-        Payment payment2 = new Payment("Воронин Семён Павлович", 3, 12, 2025, 324723);
-        String expected2 = "Плательщик: Воронин Семён Павлович, дата: 03.12.2025 сумма: 3247 руб. 23 коп.";
+        Payment payment2 = new Payment("Воронин Семён Павлович", 29, 2, 2024, 324723);
+        String expected2 = "Плательщик: Воронин Семён Павлович, дата: 29.02.2024 сумма: 3247 руб. 23 коп.";
         assertEquals(expected2, payment2.toString());
 
         assertThrows(IllegalArgumentException.class,
