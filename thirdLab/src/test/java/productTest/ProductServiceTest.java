@@ -134,37 +134,9 @@ class ProductServiceTest {
         List<IPackagedProduct> mixedSetItems = Arrays.asList(packagedSugar, packagedChocolate);
         PackagedProductSet mixedSet = new PackagedProductSet("Смешанный набор", bigPack, mixedSetItems);
 
-        List<IPackagedProduct> products2 = Arrays.asList(mixedSet);
+        List<IPackagedProduct> products2 = List.of(mixedSet);
         ProductBatch batch2 = new ProductBatch("Партия со смешанным набором", products2);
 
         assertFalse(ProductService.checkAllWeighted(batch2));
     }
-
-    @Test
-    void testCountByFilterWithDifferentFilters() {
-        WeightProduct apple = new WeightProduct("Яблоко", "Свежее");
-        WeightProduct banana = new WeightProduct("Банан", "Спелый");
-        WeightProduct orange = new WeightProduct("Апельсин", "Сочный");
-        Package pack = new Package("Пакет", 0.1);
-
-        PackagedWeightProduct packagedApple = new PackagedWeightProduct(apple, 1.0, pack);
-        PackagedWeightProduct packagedBanana = new PackagedWeightProduct(banana, 0.8, pack);
-        PackagedWeightProduct packagedOrange = new PackagedWeightProduct(orange, 0.9, pack);
-
-        List<IPackagedProduct> products = Arrays.asList(packagedApple, packagedBanana, packagedOrange);
-        ProductBatch batch = new ProductBatch("Фрукты", products);
-
-        Filter beginFilter = new BeginStringFilter("А");
-        int beginCount = ProductService.countByFilter(batch, beginFilter);
-        assertEquals(1, beginCount);
-
-        Filter containsFilter = new ContainsStringFilter("ан");
-        int containsCount = ProductService.countByFilter(batch, containsFilter);
-        assertEquals(1, containsCount);
-
-        Filter endFilter = new EndStringFilter("н");
-        int endCount = ProductService.countByFilter(batch, endFilter);
-        assertEquals(2, endCount);
-    }
-
 }

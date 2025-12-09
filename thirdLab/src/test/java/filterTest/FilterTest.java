@@ -26,7 +26,7 @@ class FiltersTest {
         assertFalse(filter1.apply(""));
         assertFalse(filter1.apply("tes"));
         assertTrue(filter1.apply("test"));
-        assertTrue(filter1.apply("testing"));
+        assertTrue(filter1.apply("testi ng"));
     }
 
     @Test

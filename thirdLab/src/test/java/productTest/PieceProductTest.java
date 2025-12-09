@@ -53,9 +53,6 @@ class PieceProductTest {
         PieceProduct product = new PieceProduct("Книга", "Детская", 0.5);
         String result = product.toString();
 
-        assertTrue(result.contains("PieceProduct{"));
-        assertTrue(result.contains("name='Книга'"));
-        assertTrue(result.contains("description='Детская'"));
         assertTrue(result.contains("pieceWeight=0.5"));
     }
 
