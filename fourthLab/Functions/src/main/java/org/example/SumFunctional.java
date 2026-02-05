@@ -6,7 +6,7 @@ public class SumFunctional implements Functional<SingleVariableFunction>{
     public double calculate(SingleVariableFunction function) {
         double a = function.getLowerBound();
         double b = function.getUpperBound();
-        double mid = (a+b) / 2;
+        double mid = (a+b) / 2.0;
 
         return function.calculate(a) + function.calculate(b) + function.calculate(mid);
     }

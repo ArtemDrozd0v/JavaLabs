@@ -81,7 +81,7 @@ public class FunctionalTest {
     @Test
     void testIntegralFunctionalCalculateRational() {
         // 1 /(x+1)-> ln(x+1) | 1 0 = ln2 - ln1 = ln2
-        SingleVariableFunction rationalFunction = new RationalFunction(0, 1, 1, 1, 0, 1);
+        SingleVariableFunction rationalFunction = new RationalFunction(34, 59, 273, 383, 0, 1);
         Functional<SingleVariableFunction> integralFunctional = new IntegralFunctional(0, 1);
 
         assertEquals(Math.log(2), integralFunctional.calculate(rationalFunction), 0.001);
