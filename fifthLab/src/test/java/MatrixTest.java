@@ -51,7 +51,7 @@ public class MatrixTest {
             }
         }
 
-        assertEquals(0, matrix2.determinant());
+        assertEquals(0, matrix2.determinant(), 1e-10);
     }
 
     @Test

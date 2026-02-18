@@ -7,7 +7,7 @@ public class Matrix implements IMatrix{
     private final int size;
     private final double[] arr;
 
-    private boolean flag = false;
+    private boolean flag;
     private double cachedDet = 0;
 
     public Matrix(int size){

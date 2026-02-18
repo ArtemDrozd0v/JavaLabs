@@ -7,8 +7,8 @@ public class UpTriangleMatrix extends Matrix{
 
     @Override
     public void set(int row, int col, double n) {
-        if (row > col && Math.abs(n) > 1e-10) {
-            throw new IllegalArgumentException("Нельзя установить ненулевое значение ниже диагонали");
+        if (row > col ){  // (row > col && n == 0)
+            throw new IllegalArgumentException("Нельзя установить ненулевое значение ниже диагонали и на диагонали");
         }
         super.set(row, col, n);
     }
@@ -20,7 +20,7 @@ public class UpTriangleMatrix extends Matrix{
 
     @Override
     public double determinant() {
-        double det = 1.0;
+        double det = 1;
         int size = getSize();
         for (int i = 0; i < size; i++) {
             det *= get(i, i);

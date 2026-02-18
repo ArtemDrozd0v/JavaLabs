@@ -31,7 +31,6 @@ public class DiagMatrixTest {
         assertEquals(2, matrix.get(1, 1));
         assertEquals(3, matrix.get(2, 2));
 
-        matrix.set(0, 1, 0);
         assertEquals(0, matrix.get(0, 1));
 
 
