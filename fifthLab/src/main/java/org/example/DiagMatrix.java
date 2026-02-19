@@ -1,6 +1,6 @@
 package org.example;
 
-public class DiagMatrix extends Matrix{
+public class DiagMatrix extends Matrix {
     public DiagMatrix(int size) {
         super(size);
     }
@@ -14,7 +14,7 @@ public class DiagMatrix extends Matrix{
 
     @Override
     public void set(int row, int col, double n) {
-    if (row != col && n != 0) {
+        if (row != col && n != 0) {
             throw new IllegalArgumentException("Нельзя установить ненулевое значение вне диагонали");
         }
         super.set(row, col, n);

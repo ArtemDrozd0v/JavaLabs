@@ -61,12 +61,10 @@ public class MatrixServiceTest {
         m3.set(1, 1, 4);
 
         IMatrix[] matrices = {m1, m2, m3};
+        IMatrix[] expectedMatrices = {m1, m3, m2};
 
         MatrixService.arrangeMatrices(matrices);
-
-        assertEquals(-2, matrices[0].determinant());
-        assertEquals(0, matrices[1].determinant());
-        assertEquals(1, matrices[2].determinant());
+        assertArrayEquals(expectedMatrices, matrices);
     }
 
     @Test

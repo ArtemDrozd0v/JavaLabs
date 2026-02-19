@@ -1,13 +1,13 @@
 package org.example;
 
-public class UpTriangleMatrix extends Matrix{
+public class UpTriangleMatrix extends Matrix {
     public UpTriangleMatrix(int size) {
         super(size);
     }
 
     @Override
     public void set(int row, int col, double n) {
-        if (row > col ){  // (row > col && n == 0)
+        if (row > col && n != 0) {
             throw new IllegalArgumentException("Нельзя установить ненулевое значение ниже диагонали и на диагонали");
         }
         super.set(row, col, n);
