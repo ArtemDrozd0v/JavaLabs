@@ -6,10 +6,9 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CollectionsAndListDemoTest {
+public class CollectionsDemoTest {
 
     private CollectionsDemo collectionsDemo;
-    private ListDemo listDemo;
     private Human human1;
     private Human human2;
     private Human human3;
@@ -21,7 +20,6 @@ public class CollectionsAndListDemoTest {
     @BeforeEach
     void setUp() {
         collectionsDemo = new CollectionsDemo();
-        listDemo = new ListDemo();
 
         human1 = new Human("Sazonov", "Pavel", "Pavlovich", 10);
         human2 = new Human("Alexandrov ", "Sergey", "Vyacheslavovich", 25);
@@ -50,13 +48,13 @@ public class CollectionsAndListDemoTest {
 
     @Test
     void findSameSurnamesPeopleTest() {
-        List<Human> result = listDemo.findSameSurnamesPeople(humans, human1);
+        List<Human> result = collectionsDemo.findSameSurnamesPeople(humans, human1);
         assertEquals(Arrays.asList(human3), result);
     }
 
     @Test
     void copyWithoutHumanTest() {
-        List<Human> result = listDemo.copyWithoutHuman(humans, human1);
+        List<Human> result = collectionsDemo.copyWithoutHuman(humans, human1);
         List<Human> listWithoutHuman = Arrays.asList(human2, human3, human4, student);
         assertEquals(result, listWithoutHuman);
     }
@@ -72,8 +70,8 @@ public class CollectionsAndListDemoTest {
         Set<Integer> set = new HashSet<>(Arrays.asList(1, 9, 10));
         Set<Integer> set2 = new HashSet<>(List.of());
 
-        List<Set<Integer>> result = listDemo.setWithoutInterceptions(list, set);
-        List<Set<Integer>> result2 = listDemo.setWithoutInterceptions(list, set2);
+        List<Set<Integer>> result = collectionsDemo.setWithoutInterceptions(list, set);
+        List<Set<Integer>> result2 = collectionsDemo.setWithoutInterceptions(list, set2);
 
         assertEquals(Arrays.asList(new HashSet<>(Arrays.asList(4, 5, 6))), result);
         assertEquals(Arrays.asList(
@@ -85,7 +83,7 @@ public class CollectionsAndListDemoTest {
 
     @Test
     void getPeopleWithMaxAgeTest() {
-        Set<Human> result = listDemo.getPeopleWithMaxAge(humans);
+        Set<Human> result = collectionsDemo.getPeopleWithMaxAge(humans);
         assertEquals(new HashSet<>(Arrays.asList(human2, human4)), result);
     }
 
@@ -96,7 +94,7 @@ public class CollectionsAndListDemoTest {
         Human h3 = new Human("A", "B", "C", 3);
 
         Set<Human> unsortedSet = new HashSet<>(Arrays.asList(h1, h2, h3));
-        List<Human> result = listDemo.sortListByFullName(unsortedSet);
+        List<Human> result = collectionsDemo.sortListByFullName(unsortedSet);
 
         List<Human> sortedList = Arrays.asList(h2, h3, h1);
 
@@ -106,7 +104,7 @@ public class CollectionsAndListDemoTest {
     @Test
     void getPeopleByIdsTest() {
         Set<Integer> targetIds = new HashSet<>(Arrays.asList(4, 5));
-        Set<Human> result = listDemo.getPeopleByIds(idToHumanMap, targetIds);
+        Set<Human> result = collectionsDemo.getPeopleByIds(idToHumanMap, targetIds);
         Set<Human> set = new HashSet<>(Arrays.asList(human4, student));
 
         assertEquals(set, result);
@@ -115,7 +113,7 @@ public class CollectionsAndListDemoTest {
     @Test
     void getAdultIdsTest() {
         Set<Integer> ids = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
-        List<Integer> result = listDemo.getAdultIds(idToHumanMap, ids);
+        List<Integer> result = collectionsDemo.getAdultIds(idToHumanMap, ids);
         List<Integer> correctIds = Arrays.asList(2, 3, 4);
         assertEquals(correctIds, result);
 
@@ -124,7 +122,7 @@ public class CollectionsAndListDemoTest {
     @Test
     void createAgeMapTest() {
         Set<Integer> ids = new HashSet<>(Arrays.asList(1, 2));
-        Map<Integer, Integer> result = listDemo.createAgeMap(idToHumanMap, ids);
+        Map<Integer, Integer> result = collectionsDemo.createAgeMap(idToHumanMap, ids);
 
         Map<Integer, Integer> newMap = new HashMap<>();
         newMap.put(1, 10);
@@ -136,7 +134,7 @@ public class CollectionsAndListDemoTest {
     @Test
     void listPeopleByAgeTest() {
         Set<Human> peopleSet = new HashSet<>(humans);
-        Map<Integer, List<Human>> result = listDemo.listPeopleByAge(peopleSet);
+        Map<Integer, List<Human>> result = collectionsDemo.listPeopleByAge(peopleSet);
 
         Map<Integer, List<Human>> expectedMap = new HashMap<>();
 
@@ -162,7 +160,7 @@ public class CollectionsAndListDemoTest {
         Set<Human> testSet = new HashSet<>(humans);
         testSet.add(human5);
 
-        Map<Integer, Map<Character, List<Human>>> result = listDemo.listPeopleByAgeAndFirstLetter(testSet);
+        Map<Integer, Map<Character, List<Human>>> result = collectionsDemo.listPeopleByAgeAndFirstLetter(testSet);
 
         Map<Integer, Map<Character, List<Human>>> expected = new HashMap<>();
 
