@@ -73,7 +73,7 @@ public class CollectionsDemoTest {
         List<Set<Integer>> result = collectionsDemo.setWithoutInterceptions(list, set);
         List<Set<Integer>> result2 = collectionsDemo.setWithoutInterceptions(list, set2);
 
-        assertEquals(Arrays.asList(new HashSet<>(Arrays.asList(4, 5, 6))), result);
+        assertEquals(List.of(new HashSet<>(Arrays.asList(4, 5, 6))), result);
         assertEquals(Arrays.asList(
                 new HashSet<>((Arrays.asList(1, 2, 3))),
                 new HashSet<>((Arrays.asList(4, 5, 6))),
@@ -138,9 +138,9 @@ public class CollectionsDemoTest {
 
         Map<Integer, List<Human>> expectedMap = new HashMap<>();
 
-        expectedMap.put(10, Arrays.asList(human1));
-        expectedMap.put(20,  Arrays.asList(human3));
-        expectedMap.put(17,  Arrays.asList(student));
+        expectedMap.put(10, Collections.singletonList(human1));
+        expectedMap.put(20, Collections.singletonList(human3));
+        expectedMap.put(17, Collections.singletonList(student));
 
         List<Human> expectedAge25List = new ArrayList<>();
         for (Human h : peopleSet) {
