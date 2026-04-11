@@ -3,9 +3,7 @@ package org.example;
 import java.io.File;
 
 public class FileSearch {
-    public File[] findFilesByExtension(String path, String extension) {
-        File dir = new File(path);
-
+    public File[] findFilesByExtension(File dir, String extension) {
         if (!dir.exists() || !dir.isDirectory()){
             return new File[0];
         }

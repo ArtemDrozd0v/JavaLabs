@@ -1,9 +1,18 @@
 package org.example.serialize;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.example.serialize.JacksonStreamingAPI.HouseDeserializer;
+import org.example.serialize.JacksonStreamingAPI.HouseSerializer;
+import org.example.serialize.JacksonStreamingAPI.PersonDeserializer;
+import org.example.serialize.JacksonStreamingAPI.PersonSerializer;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+@JsonSerialize(using = HouseSerializer.class)
+@JsonDeserialize(using = HouseDeserializer.class)
 public class House implements Serializable {
     private String cadastreNumber;
     private String address;

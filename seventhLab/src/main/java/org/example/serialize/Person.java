@@ -1,8 +1,15 @@
 package org.example.serialize;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.example.serialize.JacksonStreamingAPI.PersonDeserializer;
+import org.example.serialize.JacksonStreamingAPI.PersonSerializer;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@JsonSerialize(using = PersonSerializer.class)
+@JsonDeserialize(using = PersonDeserializer.class)
 public class Person implements Serializable {
     private String surname;
     private String name;

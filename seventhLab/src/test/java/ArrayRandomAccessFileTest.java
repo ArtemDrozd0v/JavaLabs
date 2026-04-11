@@ -20,8 +20,8 @@ class ArrayRandomAccessFileTest {
             }
         }
 
-        int[] expected = {2, 3};
-        int[] actual = ArrayRandomAccessFile.readFromPosition(filePath, 8, 2);
+        int[] expected = {2, 3, 4};
+        int[] actual = ArrayRandomAccessFile.readFromPosition(filePath, 2);
 
         assertArrayEquals(expected, actual);
     }

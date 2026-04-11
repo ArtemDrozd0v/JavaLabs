@@ -1,9 +1,16 @@
 package org.example.serialize;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.example.serialize.JacksonStreamingAPI.FlatDeserializer;
+import org.example.serialize.JacksonStreamingAPI.FlatSerializer;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+@JsonSerialize(using = FlatSerializer.class)
+@JsonDeserialize(using = FlatDeserializer.class)
 public class Flat implements Serializable {
     private int number;
     private double area;

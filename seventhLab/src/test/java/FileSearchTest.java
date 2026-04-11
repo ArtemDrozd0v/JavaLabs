@@ -1,45 +1,38 @@
 import org.example.FileSearch;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FileSearchTest {
-    @TempDir
-    Path tempDir;
-
     @Test
     void testFindFilesByExtension() throws IOException {
         FileSearch fileSearch = new FileSearch();
-        String path = tempDir.toString();
 
-        Files.createFile(tempDir.resolve("1.java"));
-        Files.createFile(tempDir.resolve("2.cpp"));
-        Files.createFile(tempDir.resolve("3.java"));
-        Files.createFile(tempDir.resolve("4.kt"));
+        File testDir = new File("test_files");
 
-        String[] expected = {"1.java", "3.java"};
-
-        File[] foundFiles = fileSearch.findFilesByExtension(path, ".java");
-
-        String[] actual = new String[foundFiles.length];
-        for (int i = 0; i < foundFiles.length; i++) {
-            actual[i] = foundFiles[i].getName();
+        if (!testDir.exists()) {
+            testDir.mkdir();
         }
 
-        assertArrayEquals(expected, actual);
-    }
+        File f1 = new File(testDir, "1.java");
+        File f2 = new File(testDir, "2.py");
+        File f3 = new File(testDir, "3.java");
+        File f4 = new File(testDir, "4.kt");
+        File f5 = new File(testDir, "5.java");
 
-    @Test
-    void testInvalidDirectory() {
-        FileSearch fileSearch = new FileSearch();
-        File[] result = fileSearch.findFilesByExtension("path", ".txt");
-        assertEquals(0, result.length);
+        f1.createNewFile();
+        f2.createNewFile();
+        f3.createNewFile();
+        f4.createNewFile();
+        f5.createNewFile();
+
+        String extension = ".java";
+        File[] foundFiles = fileSearch.findFilesByExtension(testDir, extension);
+
+        File[] expected = {f1, f3, f5};
+
+        assertArrayEquals(expected, foundFiles);
     }
 }

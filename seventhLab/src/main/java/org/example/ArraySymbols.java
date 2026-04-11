@@ -4,9 +4,7 @@ import java.io.*;
 
 public class ArraySymbols {
     public void writeArrayToSymbols(int[] array, String fileName) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-
-        try (writer) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (int i : array) {
                 writer.write(String.valueOf(i));
                 writer.write(" ");
@@ -15,9 +13,7 @@ public class ArraySymbols {
     }
 
     public int[] readArrayToSymbols(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
-
-        try (reader) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line = reader.readLine();
             String[] parts = line.split(" ");
             int[] array = new int[parts.length];
