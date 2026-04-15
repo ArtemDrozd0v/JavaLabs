@@ -12,25 +12,25 @@ public class FileSearchFullTest {
     void testRecursiveSearchWithNewNames() throws IOException {
         FileSearchFull searcher = new FileSearchFull();
 
-        File rootDir = new File("system_reports");
+        File rootDir = new File("test_package");
 
         if (!rootDir.exists()) {
             rootDir.mkdir();
         }
 
-        File dir1 = new File(rootDir, "archive");
-        File dir2 = new File(rootDir, "current");
+        File dir1 = new File(rootDir, "dir1");
+        File dir2 = new File(rootDir, "dir2");
         dir1.mkdir();
         dir2.mkdir();
 
-        File f1 = new File(dir1, "log_jan.txt");
-        File f2 = new File(dir1, "log_feb.txt");
-        File f3 = new File(dir2, "log_system.txt");
-        File f4 = new File(rootDir, "logs.txt");
+        File f1 = new File(dir1, "2012_school.png");
+        File f2 = new File(dir1, "2012_university.png");
+        File f3 = new File(dir2, "2012_me.png");
+        File f4 = new File(rootDir, "2012.png");
 
-        File f5 = new File(dir2, "error.pdf");
-        File f6 = new File(rootDir, "config.xml");
-        File f7 = new File(dir1, "test.txt");
+        File f5 = new File(dir2, "family.png");
+        File f6 = new File(rootDir, "passwords.xml");
+        File f7 = new File(dir1, "2012.txt");
 
         f1.createNewFile();
         f2.createNewFile();
@@ -40,7 +40,7 @@ public class FileSearchFullTest {
         f6.createNewFile();
         f7.createNewFile();
 
-        String pattern = "log.*\\.txt";
+        String pattern = "2012.*\\.png";
 
         List<String> results = searcher.recursiveSearcher(rootDir, pattern);
 

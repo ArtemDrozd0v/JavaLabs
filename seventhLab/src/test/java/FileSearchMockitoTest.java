@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 public class FileSearchMockitoTest {
 
     @Test
-    void testTask4(){
+    void testTask4() {
         FileSearch fileSearch = new FileSearch();
 
         File mockDir = Mockito.mock(File.class);

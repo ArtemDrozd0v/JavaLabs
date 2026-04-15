@@ -1,6 +1,7 @@
 import org.example.FileSearchFull;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import java.util.List;
 import java.io.File;
 
@@ -8,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class FileSearchFullMockitoTest {
-    private File createMockFile(String name, String userPath, boolean isDirectory) {
+    private File createMockFile(String name, String userPath) {
         File file = Mockito.mock(File.class);
 
         when(file.getName()).thenReturn(name);
         when(file.getAbsolutePath()).thenReturn(userPath);
-        when(file.isDirectory()).thenReturn(isDirectory);
+        when(file.isDirectory()).thenReturn(false);
         when(file.exists()).thenReturn(true);
 
         return file;
@@ -35,20 +36,20 @@ public class FileSearchFullMockitoTest {
     void testTask5() {
         FileSearchFull searcher = new FileSearchFull();
 
-        File f1 = createMockFile("log_jan.txt", "/user/archive/log_jan.txt", false);
-        File f2 = createMockFile("log_feb.txt", "/user/archive/log_feb.txt", false);
-        File f3 = createMockFile("log_system.txt", "/user/current/log_system.txt", false);
-        File f4 = createMockFile("logs.txt", "/user/logs.txt", false);
-        File f5 = createMockFile("error.pdf", "/user/current/error.pdf", false);
-        File f6 = createMockFile("config.xml", "/user/config.xml", false);
-        File f7 = createMockFile("test.txt", "/user/archive/test.txt", false);
+        File f1 = createMockFile("2012.txt", "/user/dir1/2012.txt");
+        File f2 = createMockFile("2012_school.png", "/user/dir1/2012_school.png");
+        File f3 = createMockFile("2012_university.png", "/user/dir2/2012_university.png");
+        File f4 = createMockFile("logs.txt", "/user/2012.png");
+        File f5 = createMockFile("2012.png", "/user/dir2/2012_me.png");
+        File f6 = createMockFile("password.xml", "/user/password.xml");
+        File f7 = createMockFile("family.png", "/user/dir2/family.png");
 
-        File mockDir1 = createMockDirectory("archive", "/user/system_reports/archive", new File[]{f1, f2, f7});
-        File mockDir2 = createMockDirectory("current", "/user/system_reports/current", new File[]{f3, f5});
+        File mockDir1 = createMockDirectory("dir1", "/user/test_package/dir1", new File[]{f1, f2, f7});
+        File mockDir2 = createMockDirectory("dir2", "/user/test_package/dir2", new File[]{f3, f5});
 
-        File mockRoot = createMockDirectory("system_reports", "/user/system_reports", new File[]{mockDir1, mockDir2, f4, f6});
+        File mockRoot = createMockDirectory("test_package", "/user/test_package", new File[]{mockDir1, mockDir2, f4, f6});
 
-        String pattern = "log.*\\.txt";
+        String pattern = "2012.*\\.png";
 
         List<String> results = searcher.recursiveSearcher(mockRoot, pattern);
 
@@ -56,6 +57,6 @@ public class FileSearchFullMockitoTest {
             System.out.println(path);
         }
 
-        assertEquals(4, results.size());
+        assertEquals(3, results.size());
     }
 }

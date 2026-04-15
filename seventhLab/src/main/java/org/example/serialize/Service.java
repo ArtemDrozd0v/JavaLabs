@@ -31,11 +31,10 @@ public class Service {
         return mapper.readValue(json, House.class);
     }
 
-    public void saveToCsv(House house) throws FileNotFoundException {
+    public void saveToCsv(House house) throws IOException {
         String fileName = "house_" + house.getCadastreNumber().replace(":", "_") + ".csv";
 
-        try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(
-                new FileOutputStream(fileName), StandardCharsets.UTF_8))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, StandardCharsets.UTF_8))) {
 
             writer.write('\ufeff');
 
