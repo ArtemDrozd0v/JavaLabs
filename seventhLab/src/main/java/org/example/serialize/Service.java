@@ -27,7 +27,7 @@ public class Service {
     }
 
     public House fromJson(String json) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper(); 
         return mapper.readValue(json, House.class);
     }
 
